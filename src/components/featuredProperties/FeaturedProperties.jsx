@@ -11,7 +11,7 @@ const FeaturedProperties = () => {
           alt=""
         />
         <span className="fpName">Aparhotel State Miasto</span>
-        <span className="fpCity">Mardrid</span>
+        <span className="fpCity">Mardrid</span> <br />
         <span className="fpPrice">Starting from $145</span>
         <div className="fpRating">
           <button>8.7</button>
@@ -26,7 +26,7 @@ const FeaturedProperties = () => {
           alt=""
         />
         <span className="fpName">Aparhotel State Miasto</span>
-        <span className="fpCity">Mardrid</span>
+        <span className="fpCity">Mardrid</span> <br />
         <span className="fpPrice">Starting from $145</span>
         <div className="fpRating">
           <button>8.7</button>
@@ -41,7 +41,7 @@ const FeaturedProperties = () => {
           alt=""
         />
         <span className="fpName">Aparhotel State Miasto</span>
-        <span className="fpCity">Mardrid</span>
+        <span className="fpCity">Mardrid</span> <br />
         <span className="fpPrice">Starting from $145</span>
         <div className="fpRating">
           <button>8.7</button>
@@ -56,7 +56,7 @@ const FeaturedProperties = () => {
           alt=""
         />
         <span className="fpName">Aparhotel State Miasto</span>
-        <span className="fpCity">Mardrid</span>
+        <span className="fpCity">Mardrid</span> <br />
         <span className="fpPrice">Starting from $145</span>
         <div className="fpRating">
           <button>8.7</button>

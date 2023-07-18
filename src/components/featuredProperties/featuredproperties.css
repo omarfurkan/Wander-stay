@@ -28,7 +28,8 @@
   font-weight: 500;
 }
 .fpRating > button {
-  background-color: #b10dc9;
+  background-color: #810ca8;
+  border-radius: 50%;
   color: white;
   padding: 3px;
   bottom: none;

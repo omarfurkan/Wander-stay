@@ -14,14 +14,15 @@
 }
 .bookNow {
   position: absolute;
+
   top: 10px;
   right: 0;
   bottom: none;
   padding: 10px 20px;
-  background-color: #b10dc9;
+  background-color: #810ca8;
   color: white;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
 }
 .hotelTitle {
@@ -34,11 +35,11 @@
   gap: 10px;
 }
 .hotelDistance {
-  color: #b10dc9;
+  color: #810ca8;
   font-weight: 500;
 }
 .hotelPriceHighlight {
-  color: #008009;
+  color: #ff52a2;
   font-weight: 500;
 }
 .hotelImages {
@@ -69,8 +70,9 @@
 
 .hotelDetailsPrice {
   flex: 1;
+  border-radius: 10px;
   background-color: #ebf3ff;
-  padding: 20px;
+  padding: 26px;
   display: flex;
   flex-direction: column;
   font: 20px;
@@ -89,11 +91,11 @@
 .hotelDetailsPrice > button {
   bottom: none;
   padding: 10px 20px;
-  background-color: #b10dc9;
+  background-color: #810ca8;
   color: white;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 25px;
 }
 
 .slider {
