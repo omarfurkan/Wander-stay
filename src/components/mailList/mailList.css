@@ -1,5 +1,6 @@
 .mail {
   width: 100%;
+
   margin-top: 50px;
   background-color: #b10dc9;
   color: white;
@@ -8,6 +9,7 @@
   align-items: center;
   gap: 20px;
   padding: 50px;
+  box-sizing: border-box;
 }
 
 .mailTitle {
