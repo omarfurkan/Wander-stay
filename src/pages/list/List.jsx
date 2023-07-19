@@ -29,12 +29,10 @@ const List = () => {
             </div>
             <div className="lsItem">
               <label>Check-in-date</label>
-              <span onClick={() => setOpenDate(!openDate)}>
-                {`${format(date[0]?.startDate, "MM/dd/yyyy")} to ${format(
-                  date[0]?.endDate,
-                  "MM/dd/yyyy"
-                )}`}
-              </span>
+              <span onClick={() => setOpenDate(!openDate)}>{`${format(
+                date[0].startDate,
+                "MM/dd/yyyy"
+              )} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
               {openDate && (
                 <DateRange
                   onChange={(item) => setDate([item.selection])}

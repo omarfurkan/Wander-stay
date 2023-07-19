@@ -66,7 +66,7 @@ const Header = ({ type }) => {
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faCar} />
-            <span>Car rtentals</span>
+            <span>Car rentals</span>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
@@ -140,7 +140,9 @@ const Header = ({ type }) => {
                         >
                           -
                         </button>
-                        <span className="optionsCounterNumber">1</span>
+                        <span className="optionsCounterNumber">
+                          {options.adult}
+                        </span>
                         <button
                           onClick={() => handleOption("adult", "i")}
                           className="optionCounterButton"
@@ -161,7 +163,9 @@ const Header = ({ type }) => {
                         >
                           -
                         </button>
-                        <span className="optionsCounterNumber">1</span>
+                        <span className="optionsCounterNumber">
+                          {options.children}
+                        </span>
                         <button
                           onClick={() => handleOption("children", "i")}
                           className="optionCounterButton"
@@ -180,7 +184,9 @@ const Header = ({ type }) => {
                         >
                           -
                         </button>
-                        <span className="optionsCounterNumber">1</span>
+                        <span className="optionsCounterNumber">
+                          {options.room}
+                        </span>
                         <button
                           onClick={() => handleOption("room", "i")}
                           className="optionCounterButton"
