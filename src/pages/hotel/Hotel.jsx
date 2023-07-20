@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleArrowLeft,
   faCircleArrowRight,
-  faCircleRight,
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
