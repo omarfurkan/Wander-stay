@@ -97,6 +97,7 @@ const Hotel = () => {
             {photos.map((photo, i) => (
               <div className="hotelImgWrapper">
                 <img
+                  key={i}
                   onClick={() => handleOpen(i)}
                   src={photo.src}
                   alt=""
