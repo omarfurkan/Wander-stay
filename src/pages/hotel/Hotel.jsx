@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Hotel.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
@@ -11,8 +11,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import MailList from "../../components/mailList/MailList";
 import Footer from "../../components/footer/Footer";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
 
 const Hotel = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
 
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+
   const {
     name,
     distance,
@@ -32,6 +34,19 @@ const Hotel = () => {
     cheapestprice,
     photos,
   } = data;
+
+  const { dates, options } = useContext(SearchContext);
+  console.log(dates);
+
+  const miliSecondsPerDay = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / miliSecondsPerDay);
+    return diffDays;
+  }
+
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+
   // const photos = [
   //   {
   //     src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -132,13 +147,14 @@ const Hotel = () => {
                 <p className="hotelDesc">{desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>perfect for a 9 - night stay</h1>
+                <h1>perfect for a {days} night stay</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent locaiton scorre of 9.8!
                 </span>
                 <h2>
-                  <b>$945</b>(per night)
+                  <b>${days * cheapestprice * options.room} </b>({days}
+                  {days > 1 ? " nights" : " night"})
                 </h2>
                 <button>Reserve or Book Now!</button>
               </div>
