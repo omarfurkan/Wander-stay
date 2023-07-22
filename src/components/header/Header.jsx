@@ -14,7 +14,8 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import { SearchContext } from "../../context/SearchContext";
+import { SearchContext } from "../../context/SearchContext.js";
+import { AuthContext } from "../../context/AuthContext.js";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -35,6 +36,8 @@ const Header = ({ type }) => {
   });
 
   const navigate = useNavigate();
+
+  const { user } = useContext(AuthContext);
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -87,7 +90,7 @@ const Header = ({ type }) => {
             <p className="headerDesc">
               Enjoy a Thrilling 10% Bonus on Every Adventure!
             </p>
-            <button className="headerBtn">Sign in /Register</button>
+            {!user && <button className="headerBtn">Sign in /Register</button>}
             <div className="headSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
