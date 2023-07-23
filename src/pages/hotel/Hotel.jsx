@@ -10,16 +10,19 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import MailList from "../../components/mailList/MailList";
-import Footer from "../../components/footer/Footer";
-import { useLocation } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
-import { SearchContext } from "../../context/SearchContext";
+import Footer from "../../components/footer/Footer.jsx";
+import { useLocation, useNavigate } from "react-router-dom";
+import useFetch from "../../hooks/useFetch.js";
+import { SearchContext } from "../../context/SearchContext.js";
+import { AuthContext } from "../../context/AuthContext.js";
+import Reserve from "../../components/reserve/Reserve.jsx";
 
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
 
@@ -36,7 +39,8 @@ const Hotel = () => {
   } = data;
 
   const { dates, options } = useContext(SearchContext);
-  console.log(dates);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate;
 
   const miliSecondsPerDay = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -83,6 +87,15 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber);
   };
 
+  const handleClick = () => {
+    // if (user) {
+    if (!user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -115,7 +128,9 @@ const Hotel = () => {
           )}
 
           <div className="hotelWrapper">
-            <button className="bookNow">Reserver or Book Now!</button>
+            <button onClick={handleClick} className="bookNow">
+              Reserver or Book Now!
+            </button>
             <div className="hotelTitle">{name}</div>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -156,7 +171,7 @@ const Hotel = () => {
                   <b>${days * cheapestprice * options.room} </b>({days}
                   {days > 1 ? " nights" : " night"})
                 </h2>
-                <button>Reserve or Book Now!</button>
+                <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
@@ -164,6 +179,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };
